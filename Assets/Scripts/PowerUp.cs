@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+ void Update()
     {
-        
-    }
+        PlayerController player =
+            FindAnyObjectByType<PlayerController>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player == null)
+        {
+            Debug.Log("PLAYER NOT FOUND");
+            return;
+        }
+
+        float dist = Vector3.Distance(
+            transform.position,
+            player.transform.position
+        );
+
+        Debug.Log("Distance: " + dist);
+
+        if (dist < 2f)
+        {
+            Debug.Log("POWER UP TOUCHED");
+
+            player.IncreaseCannons();
+
+            Destroy(gameObject);
+        }
     }
 }
