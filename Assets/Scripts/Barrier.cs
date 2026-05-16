@@ -14,10 +14,10 @@ public class Barrier : MonoBehaviour
 
         if (moved)
         {
-            // Move in random direction
+           
             transform.position += randomDirection * moveSpeed * Time.deltaTime;
 
-            // Spin
+            
             transform.Rotate(0, 0, spinSpeed * Time.deltaTime);
         }
     }
@@ -29,13 +29,13 @@ public class Barrier : MonoBehaviour
 
         moved = true;
 
-        // Random X and Y direction
+        
         float randomX = Random.Range(-1f, 1f);
         float randomY = Random.Range(0.5f, 1.5f);
 
         randomDirection = new Vector3(randomX, randomY, 0f).normalized;
 
-        // Destroy after 3 seconds
+        
         Destroy(gameObject, 3f);
     }
 
